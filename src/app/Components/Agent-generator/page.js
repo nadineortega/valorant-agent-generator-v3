@@ -6,7 +6,7 @@ import breach from "../../../../public/Images/valorant-agents/breach.png";
 import brimstone from "../../../../public/Images/valorant-agents/brimstone.png";
 import chamber from "../../../../public/Images/valorant-agents/chamber.png";
 import cypher from "../../../../public/Images/valorant-agents/cypher.png";
-import deadlock from "../../../../public/Images/valorant-agents/brimstone.png";
+import deadlock from "../../../../public/Images/valorant-agents/deadlock.png";
 import fade from "../../../../public/Images/valorant-agents/fade.png";
 import gecko from "../../../../public/Images/valorant-agents/gecko.png";
 import harbor from "../../../../public/Images/valorant-agents/harbor.png";
@@ -53,7 +53,28 @@ const RandomAgentGenerator = () => {
     ],
     []
   );
-
+  const agentNames = [
+    "Astra",
+    "Breach",
+    "Brimstone",
+    "chamber",
+    "cypher",
+    "deadlock",
+    "fade",
+    "gecko",
+    "harbor",
+    "jett",
+    "killjoy",
+    "neon",
+    "omen",
+    "phoenix",
+    "raze",
+    "reyna",
+    "sage",
+    "sova",
+    "viper",
+    "yoru",
+  ];
   const [agent, setAgent] = useState(0);
 
   const handleClick = () => {
@@ -62,6 +83,7 @@ const RandomAgentGenerator = () => {
   };
 
   const currentAgent = images[agent];
+  const currentAgentName = agentNames[agent];
 
   return (
     <>
@@ -70,14 +92,16 @@ const RandomAgentGenerator = () => {
           get agent
         </button>
         {typeof window !== "undefined" && (
-          <div className="w-380 h-800 mx-auto block pt-20">
+          <div className="w-380 h-800 block pt-8">
             <Image
               src={currentAgent}
               key={currentAgent}
               alt="valorant-agent"
-              width="350"
-              height="680"
+              className="w-[350px] h-[650px]"
             />
+            <h2 className="mt-2 text-center text-[33px] space-x-3 font-semibold">
+              {currentAgentName}
+            </h2>
           </div>
         )}
       </section>
