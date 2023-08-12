@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("http://fonts.cdnfonts.com/css/valorant");
+@font-face {
+  font-family: "VALORANT";
+  font-style: normal;
+  font-weight: 400;
+  src: local("VALORANT Regular"), local("VALORANT-Regular"),
+    url("/Fonts/ValorantFont.ttf") format("truetype");
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -27,6 +33,7 @@ body {
   background-repeat: no-repeat;
   overflow: hidden;
   height: 100vh;
+  font-family: "VALORANT";
 
   @media only screen and (max-width: 600px) {
     background-repeat: repeat;
