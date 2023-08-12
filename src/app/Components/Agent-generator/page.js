@@ -23,27 +23,11 @@ import viper from "../../../../public/Images/valorant-agents/viper.png";
 import yoru from "../../../../public/Images/valorant-agents/yoru.png";
 import "tailwindcss/tailwind.css";
 
-const preloadImages = async (images) => {
-  try {
-    await Promise.all(
-      images.map((imgSrc) => {
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.src = imgSrc;
-          img.onload = resolve;
-          img.onerror = reject;
-        });
-      })
-    );
-  } catch (error) {
-    console.error("Error preloading images:", error);
-  }
-};
-
 const RandomAgentGenerator = () => {
-  function getRandomAgent(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  function getRandomAgentIndex(max) {
+    return Math.floor(Math.random() * max);
   }
+
   const images = useMemo(
     () => [
       astra,
@@ -73,35 +57,30 @@ const RandomAgentGenerator = () => {
   const [agent, setAgent] = useState(0);
 
   const handleClick = () => {
-    const randomAgentImage = getRandomAgent(images);
-    setAgent(randomAgentImage);
+    const randomAgentImageIndex = getRandomAgentIndex(images.length);
+    setAgent(randomAgentImageIndex);
   };
 
   const currentAgent = images[agent];
 
-  useEffect(() => {
-    preloadImages(images);
-  }, [images]);
-
   return (
     <>
-      <button
-        className="generate-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={handleClick}
-      >
-        get agent
-      </button>
-      {typeof window !== "undefined" && (
-        <div className="w-380 h-800 mx-auto block pt-20">
-          <Image
-            src={currentAgent}
-            key={currentAgent}
-            alt="valorant-agent"
-            width="350"
-            height="680"
-          />
-        </div>
-      )}
+      <section className="flex flex-col justify-center items-center">
+        <button className="generate-btn" onClick={handleClick}>
+          get agent
+        </button>
+        {typeof window !== "undefined" && (
+          <div className="w-380 h-800 mx-auto block pt-20">
+            <Image
+              src={currentAgent}
+              key={currentAgent}
+              alt="valorant-agent"
+              width="350"
+              height="680"
+            />
+          </div>
+        )}
+      </section>
     </>
   );
 };
