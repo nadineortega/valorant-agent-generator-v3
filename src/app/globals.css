@@ -95,7 +95,7 @@ button::after {
   color: #fff;
 }
 
-button::after {
+.generate-btn::after {
   --slice-0: inset(50% 50% 50% 50%);
   --slice-1: inset(80% -6px 0 0);
   --slice-2: inset(50% -6px 30% 0);
@@ -106,10 +106,7 @@ button::after {
   content: "GET AGENT";
   display: block;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 22vh;
   background: linear-gradient(
     45deg,
     transparent 3%,
@@ -121,7 +118,7 @@ button::after {
   clip-path: var(--slice-0);
 }
 
-button:hover::after {
+.generate-btn:hover::after {
   animation: 1s glitch;
   animation-timing-function: steps(2, end);
   cursor: pointer;
